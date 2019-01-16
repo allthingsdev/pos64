@@ -1,0 +1,38 @@
+// script.totaldiscount
+// This script applies UsersInput% Discount for the Total Receipt value
+//
+//    POS64 -  Point Of Sale
+//    Copyright (c) 2012-2018 pos64.
+//
+//    This file is part of POS64.
+// **************************************************************************
+// This script applies UsersInput% Discount for the Total Receipt value
+
+
+import com.openbravo.format.Formats;
+import com.openbravo.pos.ticket.TicketLineInfo;
+import com.openbravo.pos.ticket.TicketProductInfo; 
+
+discountrate = 1 - (sales.getInputValue())/100;
+
+index = sales.getSelectedIndex();
+if (index >= 0) {
+    if (ticket.getTotal() > 0.0 && discountrate > 0.0) {
+        sdiscount = Formats.PERCENT.formatValue((1-discountrate));
+        for (int number= 0; number < ticket.getLinesCount(); number++) {
+            line = ticket.getLine(number);
+            ticket.setLine(number,
+            new TicketLineInfo(
+                    line.getProductID(),
+                    line.getProductName() + " - " + sdiscount,
+                    line.getProductTaxCategoryID(),
+                    line.getMultiply(),
+                    (double)Math.rint(line.getPrice() * discountrate *100) /100d,
+                    line.getTaxInfo())); 
+        }  
+    } else {  
+        java.awt.Toolkit.getDefaultToolkit().beep();
+    }
+} else {
+    java.awt.Toolkit.getDefaultToolkit().beep();
+}

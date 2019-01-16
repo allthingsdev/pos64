@@ -1,0 +1,15 @@
+// script.setPerson
+// Allows current Logged In User to another User account
+//
+//    POS64 -  Point Of Sale
+//    Copyright (c) 2012-2018 pos64.
+//
+//    This file is part of POS64.
+// **************************************************************************
+
+value = javax.swing.JOptionPane.showInputDialog("Enter Waiter", ticket.getProperty("person")); 
+
+if (value != null) { 
+        ticket.setProperty("person", value); 
+
+}

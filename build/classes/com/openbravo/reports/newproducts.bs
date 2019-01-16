@@ -1,0 +1,40 @@
+//     POS64 -  Point Of Sale 
+//     Copyright (c) 2012-2018 POS64 
+//    http://www.unicenta.com
+//
+//    This file is part of POS64 -  Point Of Sale 
+//
+//    
+//    
+//    \b \b \b
+//    (at your option) any later version.
+//
+//    POS64  is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with  POS64 .  If not, see <http://www.gnu.org/licenses/>
+
+report = new com.openbravo.pos.reports.PanelReportBean();
+
+report.setTitleKey("Menu.NewProducts");
+report.setReport("/com/openbravo/reports/newproducts");
+report.setResourceBundle("com/openbravo/reports/newproducts_messages");
+
+report.setSentence("SELECT "
+        + "csvimport.REFERENCE, csvimport.CODE, csvimport.NAME, "
+        + "csvimport.PRICEBUY, csvimport.PRICESELL, csvimport.CATEGORY "
+        + "FROM csvimport "
+        + "WHERE csvimport.CSVERROR='New product' "
+        + "ORDER BY csvimport.REFERENCE");
+
+report.addField("reference", com.openbravo.data.loader.Datas.STRING);
+report.addField("code", com.openbravo.data.loader.Datas.STRING);
+report.addField("name", com.openbravo.data.loader.Datas.STRING);
+report.addField("pricebuy", com.openbravo.data.loader.Datas.DOUBLE);
+report.addField("pricesell", com.openbravo.data.loader.Datas.DOUBLE);
+report.addField("category",com.openbravo.data.loader.Datas.STRING);
+
+report;

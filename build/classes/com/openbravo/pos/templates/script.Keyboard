@@ -1,0 +1,25 @@
+// script.Keyboard.txt
+// This script launches uniCenta Virtual Keyboard
+//
+//     POS64  - Touch Friendly Point Of Sale
+//     Copyright (c) 2012-2018 POS64 
+//    
+//
+//    
+//
+//    
+//    
+//    \b \b \b
+//    (at your option) any later version.
+//
+//     POS64  is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with  POS64 .  If not, see <http://www.gnu.org/licenses/>.
+// **************************************************************************
+
+Runtime runtime = Runtime.getRuntime();
+Process proc = runtime.getRuntime() .exec("cmd /C start plugins/uni_scrn_kb.jar");
